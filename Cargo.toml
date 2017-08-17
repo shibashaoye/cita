@@ -10,6 +10,8 @@ members = ["devtools"
 ,"tests/chain_performance"
 ,"tests/amqp/request"
 ,"tests/amqp/response"
+,"tests/latency/latency_res"
+,"tests/latency/latency_req"
 ]
 exclude = [
 "share_libs/parity"

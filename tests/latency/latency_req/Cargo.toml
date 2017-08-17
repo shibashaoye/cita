@@ -1,0 +1,15 @@
+[package]
+description = "CITA node."
+name = "latency_req"
+version = "0.1.0"
+authors = ["ptting@cryptape.com <ptting@cryptape.com>"]
+
+[[bin]]
+path = "latency_req.rs"
+name = "latency_req"
+
+
+[dependencies]
+amqp = "=0.0.20"
+dotenv = "0.10.0"
+pubsub = { path = "../../../share_libs/pubsub" }
