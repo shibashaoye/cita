@@ -86,7 +86,7 @@ start_consensus()
 {
     while :
     do
-        process=$(ps -ef | grep "bin/consensus_tendermint" | grep -v grep | wc -l)
+        process=$(ps -ef | grep "tendermint" | grep -v grep | wc -l)
         if [ $process -lt 4 ]; then
             break
         fi

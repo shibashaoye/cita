@@ -26,6 +26,7 @@ setup:
 	cp .env admintool/release/
 	sudo rabbitmqctl add_vhost dev                                  >/dev/null 2>&1 || echo "ok"
 	sudo rabbitmqctl set_permissions -p dev guest ".*" ".*" ".*"    >/dev/null 2>&1
+	sudo -H pip install -r admintool/requirements.txt 
 	cargo install --force --vers 0.9.0 rustfmt
 
 test:

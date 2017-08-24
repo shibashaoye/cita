@@ -41,7 +41,7 @@ function cita_start() {
         echo $! >> .pid
         RUST_LOG=consensus_tendermint,proof,txpool,engine=trace nohup bin/consensus_tendermint	-c consensus.json	 >${log_dir}/${node}.consensus  2>&1 &
         echo $! >> .pid
-        RUST_LOG=jsonrpc,jsonrpc_types,transaction=trace nohup bin/jsonrpc -c jsonrpc.json	 >${log_dir}/${node}.jsonrpc    2>&1 &
+        RUST_LOG=jsonrpc,jsonrpc_types=trace nohup bin/jsonrpc -c jsonrpc.json	 >${log_dir}/${node}.jsonrpc    2>&1 &
         echo $! >> .pid
         RUST_LOG=chain,core,transaction=trace nohup bin/chain	-c genesis.json		 >${log_dir}/${node}.chain	    2>&1 &
         echo $! >> .pid
