@@ -188,12 +188,15 @@ impl TenderMint {
         MQWork::send2pub(&self.pub_sender ,("consensus.tx".to_string(), msg.write_to_bytes().unwrap()));
     }
 */
+
     pub fn pub_block(&self, block: &Block) {
         let mut msg = communication::Message::new();
         msg.set_cmd_id(libproto::cmd_id(submodules::CONSENSUS, topics::NEW_BLK));
         msg.set_field_type(communication::MsgType::BLOCK);
         msg.set_content(block.write_to_bytes().unwrap());
-        self.pub_sender.send(("consensus.blk".to_string(), msg.write_to_bytes().unwrap())).unwrap();
+        let tmp = msg.write_to_bytes().unwrap();
+        trace!("**** pub block {:?}",tmp);
+        self.pub_sender.send(("consensus.blk".to_string(), tmp)).unwrap();
     }
 
     pub fn pub_proposal(&self, proposal: &Proposal) -> Vec<u8> {
