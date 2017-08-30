@@ -184,6 +184,7 @@ impl Pool {
 mod tests {
     use super::*;
     use libproto::blockchain::{SignedTransaction, UnverifiedTransaction, Transaction};
+    use util::H512;
 
     pub fn generate_tx(data: Vec<u8>, valid_until_block: u64) -> SignedTransaction {
         let mut tx = Transaction::new();

@@ -928,6 +928,7 @@ mod tests {
     use self::Chain;
     use self::cita_crypto::*;
     use super::*;
+    use cita_ed25519::KeyPair;
     use db;
     use libchain::block::{Block, BlockBody};
     use libchain::genesis::Spec;

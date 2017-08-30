@@ -83,6 +83,7 @@ impl Recorder {
 mod tests {
     use super::*;
     use H256;
+    use hashable::HASH_NAME;
     use hashable::Hashable;
 
     #[test]

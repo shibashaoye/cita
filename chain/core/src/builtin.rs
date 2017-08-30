@@ -174,6 +174,8 @@ impl Impl for Ripemd160 {
 #[cfg(test)]
 mod tests {
     use super::{Builtin, Linear, ethereum_builtin, Pricer};
+    use cita_ed25519::{KeyPair, sign as ED_sign, pubkey_to_address as ED_pubkey_to_address};
+    use util::{U256, H256, BytesRef};
     // use ethjson;
     use util::{U256, BytesRef};
 

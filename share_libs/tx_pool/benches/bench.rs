@@ -22,6 +22,7 @@ extern crate test;
 extern crate libproto;
 extern crate util;
 
+use ed25519::KeyPair;
 use libproto::blockchain::{Transaction, UnverifiedTransaction, SignedTransaction};
 use std::time::SystemTime;
 use test::Bencher;
