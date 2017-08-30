@@ -53,6 +53,8 @@ extern crate cita_ed25519;
 extern crate common_types as types;
 extern crate jsonrpc_types;
 extern crate cita_secp256k1;
+#[cfg(test)]
+extern crate cita_crypto;
 
 pub mod state;
 pub mod account_db;

@@ -941,13 +941,13 @@ impl Chain {
 #[cfg(test)]
 mod tests {
     #![allow(unused_must_use, deprecated, unused_extern_crates)]
-    extern crate cita_ed25519;
+    extern crate cita_crypto;
     extern crate env_logger;
     extern crate mktemp;
     extern crate test;
     use self::Chain;
     use super::*;
-    use cita_ed25519::KeyPair;
+    use cita_crypto::{KeyPair, PrivKey};
     use db;
     use libchain::block::{Block, BlockBody};
     use libchain::genesis::Spec;
@@ -959,6 +959,7 @@ mod tests {
     use test::{Bencher, black_box};
     use types::transaction::SignedTransaction;
     use util::{U256, H256, Address};
+    use util::crypto::CreateKey;
     use util::kvdb::{Database, DatabaseConfig};
     //use util::hashable::HASH_NAME;
 
@@ -1000,7 +1001,7 @@ mod tests {
         chain
     }
 
-    fn create_block(chain: &Chain, privkey: &cita_ed25519::PrivKey, to: Address, data: Vec<u8>, nonce: (u32, u32)) -> Block {
+    fn create_block(chain: &Chain, privkey: &PrivKey, to: Address, data: Vec<u8>, nonce: (u32, u32)) -> Block {
         let mut block = Block::new();
 
         block.set_parent_hash(chain.get_current_hash());
@@ -1072,7 +1073,7 @@ mod tests {
 
     #[test]
     fn test_code_at() {
-        let keypair = cita_ed25519::KeyPair::gen_keypair();
+        let keypair = KeyPair::gen_keypair();
         let privkey = keypair.privkey();
         let chain = init_chain();
         /*
@@ -1125,13 +1126,12 @@ mod tests {
 
     #[test]
     fn test_contract() {
-        //let keypair = cita_ed25519::KeyPair::gen_keypair();
+        //let keypair = KeyPair::gen_keypair();
         //let privkey = keypair.privkey();
         //let pubkey = keypair.pubkey();
-        let privkey = cita_ed25519::PrivKey::from("fc8937b92a38faf0196bdac328723c52da0e810f78d257c9ca8c0e304d6a3ad5bf700d906baec07f766b6492bea4223ed2bcbcfd978661983b8af4bc115d2d66");
-        let pubkey = cita_ed25519::PubKey::from("bf700d906baec07f766b6492bea4223ed2bcbcfd978661983b8af4bc115d2d66");
+        let privkey = PrivKey::from("fc8937b92a38faf0196bdac328723c52da0e810f78d257c9ca8c0e304d6a3ad5bf700d906baec07f766b6492bea4223ed2bcbcfd978661983b8af4bc115d2d66");
+        //let pubkey = PubKey::from("bf700d906baec07f766b6492bea4223ed2bcbcfd978661983b8af4bc115d2d66");
         println!("privkey: {:?}", privkey);
-        println!("pubkey: {:?}", pubkey);
         let chain = init_chain();
 
         /*
